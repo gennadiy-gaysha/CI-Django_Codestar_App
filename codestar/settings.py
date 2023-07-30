@@ -36,7 +36,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "django-codestar-app-gaysha-7de13aecf0c9.herokuapp.com", "127.0.0.1"]
 
 # Application definition
 
