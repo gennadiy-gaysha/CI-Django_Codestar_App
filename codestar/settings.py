@@ -53,6 +53,9 @@ INSTALLED_APPS = [
     'cloudinary_storage',  # Cloudinary storage app
     'django.contrib.staticfiles',
     'cloudinary',  # Cloudinary app
+    # Django Summernote is a package that integrates the Summernote WYSIWYG editor into Django's admin interface. With this configuration, you can now use Summernote for specific fields in your models, which allows you to have rich text editing capabilities in the admin panel for those fields. It makes it easier to add and edit formatted text, images, and other media content in those fields without having to write HTML code directly.
+    # In your Django models, you can use the "SummernoteTextField" or "SummernoteTextFormField" for the fields you want to use with Summernote.
+    'django_summernote',
     'blog'
 ]
 

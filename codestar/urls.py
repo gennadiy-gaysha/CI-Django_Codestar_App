@@ -14,8 +14,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # That will register our Summernote urls here  with our urls.py file. Now all
+    # we need to do is tell our admin panel which field  we want to use Summernote for.
+
+    # In this Django urlpatterns configuration, the path "summernote/" is mapped to
+    # include the URLs provided by the "django_summernote.urls" module.
+
+    # The "include" function allows you to include other URL configurations from different
+    # apps into the main urlpatterns. Assuming you have installed the Django Summernote
+    # package, when a user visits "/summernote/" in the browser, Django will handle the
+    # request and navigate to the Django Summernote views and templates.
+
+    path('summernote/', include("django_summernote.urls"))
 ]
