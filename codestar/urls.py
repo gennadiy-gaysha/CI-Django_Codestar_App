@@ -30,5 +30,19 @@ urlpatterns = [
     # package, when a user visits "/summernote/" in the browser, Django will handle the
     # request and navigate to the Django Summernote views and templates.
 
-    path('summernote/', include("django_summernote.urls"))
+    path('summernote/', include("django_summernote.urls")),
+
+    # In the project-level urls.py, use the include() function to include the app's URL
+    # patterns. This effectively delegates the URL routing for that app to its own urls.py file.
+
+    # By including the app-level urls.py files within the project-level urls.py, you establish
+    # the necessary connection. Django's URL dispatcher will navigate requests through this
+    # connection to the appropriate views based on the URL patterns defined in the app-level
+    # urls.py files.
+
+    #  the project-level urls.py uses the include() function to route the request to the app-level
+    #  urls.py. The app-level urls.py then further routes the request to the appropriate view,
+    #  such as MyAppView. This connection ensures that Django's URL dispatcher knows how to route
+    #  requests correctly throughout the project.
+    path('', include('blog.urls'), name='blog_urls')
 ]
