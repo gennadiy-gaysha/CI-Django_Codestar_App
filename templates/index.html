@@ -8,6 +8,14 @@
         <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
+                <!-- When we use the ListView class-based view with a model, Django automatically
+                generates a context variable based on the model's name in lowercase followed
+                by _list. In your case, since the model is Post, Django generates the context
+                variable post_list.
+                So, in the template index.html, when you see % for post in post_list %, you
+                are iterating through the list of Post objects that were retrieved using the
+                ListView. This post_list context variable is automatically available in the
+                template because of the ListView context behavior. -->
                 {% for post in post_list %}
                 <div class="col-md-4">
                     <div class="card mb-4">
@@ -23,7 +31,13 @@
                                     <p class="author">Author: {{ post.author }}</p>
                                 </div>
                             </div>
-                            <a href="#" class="post-link">
+                            <!-- In urls.py: name="post_detail": This is the name of the URL pattern, which
+                            is used to refer to this specific URL configuration in your code. It's especially useful when you want to generate URLs using the url template tag or
+                            the reverse() function. -->
+                            <!-- curley brackets and % % - is a control statement -->
+
+                            <!-- In Django template syntax, % url 'post_detail' post.slug % is a template tag that generates a URL based on the URL pattern named 'post_detail'. The post.slug part provides the necessary information (the slug) to create the URL. -->
+                            <a href="{% url 'post_detail' post.slug  %}" class="post-link">
                                 <h2 class="card-title">{{ post.title }}</h2>
                                 <p class="card-text">{{ post.excerpt }}</p>
                             </a>

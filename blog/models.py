@@ -16,6 +16,21 @@ STATUS = ((0, "Draft"), (1, "Published"))
 
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
+    # This field represents the slug of the blog post. It's a SlugField with a
+    # maximum length of 200 characters and is also marked as unique=True. The
+    # purpose of this field is to store the slug version of the title. The slug
+    # is usually generated automatically from the title, ensuring that it contains
+    # only lowercase letters, numbers, and hyphens. This field is used in URLs to
+    # uniquely identify a blog post.
+
+    # For example, if the title of a blog post is "My First Blog Post", the
+    # corresponding slug might be "my-first-blog-post". This slug is then used
+    # in URLs to create a more readable and user-friendly address, such as
+    # /posts/my-first-blog-post/.
+
+    # By using slugs, you make your URLs more descriptive and easy to remember,
+    # and they can also improve the SEO of your website by including relevant
+    # keywords in the URLs.
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
         #   User: The User model is imported from django.contrib.auth.models, and it
@@ -64,6 +79,11 @@ class Post(models.Model):
 
 class Comment(models.Model):
     # One To Many relationship - one post can have many comments
+
+    # This ForeignKey relationship establishes a link between a comment and
+    # the post it belongs to. The related_name attribute in the ForeignKey
+    # field defines the attribute name to use for the reverse relation from
+    # Post to Comment
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name="comments")
     name = models.CharField(max_length=80)

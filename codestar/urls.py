@@ -44,5 +44,5 @@ urlpatterns = [
     #  urls.py. The app-level urls.py then further routes the request to the appropriate view,
     #  such as MyAppView. This connection ensures that Django's URL dispatcher knows how to route
     #  requests correctly throughout the project.
-    path('', include('blog.urls'), name='blog_urls')
+    path('', include('blog.urls'), name='blog_urls'),
 ]
