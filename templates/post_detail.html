@@ -35,8 +35,7 @@
                     <div class="col-1">
                         <!-- The number of likes goes before the closing strong tag -->
                         <!-- number_of_likes is a method that we defined in our Post class -->
-                        <strong class="text-secondary"><i class="far fa-heart"></i> {{ post.number_of_likes }}
-                        </strong>
+                        <strong class="text-secondary"><i class="far fa-heart"></i> {{ post.number_of_likes }} </strong>
                     </div>
                     <div class="col-1">
                         <!-- comments object in your template comes from the ForeignKey relationship
@@ -72,6 +71,7 @@
                             {{ comment.created_on }}
                         </span> wrote:
                     </p>
+                    <!-- The body of the comment goes before the | -->
                     {{ comment.body | linebreaks }}
                 </div>
                 <!-- Our for loop ends here -->

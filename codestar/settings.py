@@ -19,7 +19,19 @@ from dotenv import load_dotenv
 import dj_database_url
 load_dotenv()
 # ==================================================
+# ACCOUNT_EMAIL_VERIFICATION = 'none', pertains to the configuration of the Django
+# Allauth app, which is commonly used for handling authentication and account management
+# in Django projects.
 
+# When the value is set to 'mandatory', it means that users must verify their email
+# address by clicking on a link sent to their email before they can log in or use the
+# application. This is a common practice for ensuring that the email provided during
+# registration is valid and belongs to the user.
+
+# However, by setting ACCOUNT_EMAIL_VERIFICATION to 'none', you are essentially disabling
+# the email verification step. Users will be able to sign up and use the application
+# immediately without needing to verify their email address.
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -50,6 +62,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    # =================================
+    # authentication:
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # =================================
     'cloudinary_storage',  # Cloudinary storage app
     'django.contrib.staticfiles',
     'cloudinary',  # Cloudinary app
@@ -58,6 +77,11 @@ INSTALLED_APPS = [
     'django_summernote',
     'blog'
 ]
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

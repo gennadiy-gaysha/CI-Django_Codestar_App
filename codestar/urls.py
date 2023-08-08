@@ -45,4 +45,11 @@ urlpatterns = [
     #  such as MyAppView. This connection ensures that Django's URL dispatcher knows how to route
     #  requests correctly throughout the project.
     path('', include('blog.urls'), name='blog_urls'),
+    #  This is used to include the URL patterns provided by the Django Allauth app into your
+    # project's main URL configuration
+
+    # When you include the Allauth URL patterns in this manner, it means that when users visit
+    # URLs like /accounts/login/, /accounts/signup/, or /accounts/password/reset/, the Allauth
+    # views associated with these URLs will be invoked.
+    path('accounts/', include('allauth.urls'))
 ]

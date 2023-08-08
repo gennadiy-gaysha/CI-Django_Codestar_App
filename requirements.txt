@@ -9,3 +9,4 @@ psycopg2-binary==2.9.6  # Keep psycopg2-binary and remove psycopg2
 pytz==2021.1
 sqlparse==0.4.1
 python-dotenv==1.0.0
+django-allauth==0.54.0

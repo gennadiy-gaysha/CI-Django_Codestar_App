@@ -31,12 +31,8 @@
                                     <p class="author">Author: {{ post.author }}</p>
                                 </div>
                             </div>
-                            <!-- In urls.py: name="post_detail": This is the name of the URL pattern, which
-                            is used to refer to this specific URL configuration in your code. It's especially useful when you want to generate URLs using the url template tag or
-                            the reverse() function. -->
+                            <!-- In urls.py: name="post_detail": This is the name of the URL pattern, which is used to refer to this specific URL configuration in your code. It's especially useful when you want to generate URLs using the url template tag or the reverse() function. -->
                             <!-- curley brackets and % % - is a control statement -->
-
-                            <!-- In Django template syntax, % url 'post_detail' post.slug % is a template tag that generates a URL based on the URL pattern named 'post_detail'. The post.slug part provides the necessary information (the slug) to create the URL. -->
                             <a href="{% url 'post_detail' post.slug  %}" class="post-link">
                                 <h2 class="card-title">{{ post.title }}</h2>
                                 <p class="card-text">{{ post.excerpt }}</p>
