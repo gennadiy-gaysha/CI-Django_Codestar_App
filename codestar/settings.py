@@ -16,6 +16,7 @@ from pathlib import Path
 import os
 import os.path
 from dotenv import load_dotenv
+from django.contrib.messages import constants as messages
 import dj_database_url
 load_dotenv()
 # ==================================================
@@ -49,7 +50,9 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 # ==================================================
 
-DEBUG = True
+DEBUG = False
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ALLOWED_HOSTS = [
     "django-codestar-app-gaysha-7de13aecf0c9.herokuapp.com", "127.0.0.1"]
@@ -75,8 +78,26 @@ INSTALLED_APPS = [
     # Django Summernote is a package that integrates the Summernote WYSIWYG editor into Django's admin interface. With this configuration, you can now use Summernote for specific fields in your models, which allows you to have rich text editing capabilities in the admin panel for those fields. It makes it easier to add and edit formatted text, images, and other media content in those fields without having to write HTML code directly.
     # In your Django models, you can use the "SummernoteTextField" or "SummernoteTextFormField" for the fields you want to use with Summernote.
     'django_summernote',
+    'crispy_forms',
     'blog'
 ]
+
+# This mapping allows you to specify the appropriate alert class for each type of message. For instance, when you create an INFO-level message in Django, it will be styled with the alert-info class according to this mapping.
+# This mapping provides a convenient way to assign visual styles to messages based on their importance or type.
+MESSAGE_TAGS = {
+        messages.DEBUG: 'alert-info',
+        messages.INFO: 'alert-info',
+        messages.SUCCESS: 'alert-success',
+        messages.WARNING: 'alert-warning',
+        messages.ERROR: 'alert-danger',
+}
+
+# CRISPY_TEMPLATE_PACK: This is a setting provided by the "django-crispy-forms" package. It allows you to choose a template pack that defines how form elements should be rendered. The template pack determines the overall styling and structure of the rendered forms.
+
+# 'bootstrap4': This value specifies the template pack to use. In this case, it's set to 'bootstrap4', which indicates that the Bootstrap 4 template pack should be used. The Bootstrap 4 template pack provides styles and layouts consistent with the Bootstrap framework, making your forms visually appealing and responsive.
+
+# By setting CRISPY_TEMPLATE_PACK to 'bootstrap4', you're ensuring that any forms rendered using "django-crispy-forms" will follow the Bootstrap 4 styling conventions. This can save you a significant amount of time and effort in styling forms, as the package takes care of rendering forms with consistent Bootstrap styles out of the box.
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 SITE_ID = 1
 

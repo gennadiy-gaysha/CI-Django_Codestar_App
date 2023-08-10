@@ -19,5 +19,13 @@ urlpatterns = [
     # calling it slug. The path converter converts this text into a slug  field, it tells
     # Django to match any slug string, which consists of ASCII characters or numbers  plus
     # the hyphen and underscore characters.
-    path('<slug:slug>/', views.PostDetail.as_view(), name="post_detail")
+
+    # <slug:slug> in urls.py file is a path converter in Django's URL patterns. It's used to
+    # capture a string of text from the URL and pass it as a parameter to the associated view
+    # function.
+    # The second slug in these angle brackets is a keyword name that matches the slug parameter
+    # in the get method of the PostDetail class
+    path('<slug:slug>/', views.PostDetail.as_view(), name="post_detail"),
+    path('like/<slug:slug>', views.PostLike.as_view(), name='post_like')
+
 ]
